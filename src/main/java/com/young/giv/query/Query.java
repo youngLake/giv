@@ -29,7 +29,6 @@ public abstract class Query{
 	
 	protected static String[] keys=new String[]{"xxxx"};
 	
-	//עⲻҪı䵱ǰֵfinal
 	private static String loginUrl;
 	
 	private final static String logoutUrl;
@@ -54,27 +53,12 @@ public abstract class Query{
 		netlinkid = GivProperties.getNetlinkid();
 	}
 	
-	/**
-	 * ׼ ڳʼ̬ʵʹ
-	 */
 	public abstract void prepare();
 
-	/**
-	 * ִ ̲ѯ
-	 */
     public abstract void emit();
     
-    /**
-     * ͷԴ
-     */
     public abstract void release();
     
-    /**
-     * ȡ
-     * @param url
-     * @param map
-     * @return
-     */
     private ByteBuffer getData(String url,Map<String, String> map){
     	
     	HttpDataFilter dataFilter = new HttpDataFilter();
@@ -82,18 +66,10 @@ public abstract class Query{
     	return dataFilter.doRequestBasic(url, map);
     }
     
-    /**
-     *  ȡ
-     * @param url
-     * @return
-     */
     private ByteBuffer getData(String url){
     	return getData(url,null);
     }
     
-    /**
-     * ˳
-     */
     public void toLogOut(){
     	String requestUrl = "";
     	try{
@@ -107,9 +83,6 @@ public abstract class Query{
     	}
     }
     
-    /**
-     * ȡsessionKey
-     */
     public synchronized void toLogIn(){
     	try{
     		ByteBuffer data = getData(loginUrl, null);
@@ -147,7 +120,6 @@ public abstract class Query{
     }
     
     /**
-     * ȡѯurl
      * @param param
      * @return
      */
@@ -185,13 +157,6 @@ public abstract class Query{
     }
     
     
-   /**
-    * װͼĽݼ
-    * @param startCode
-    * @param endCode
-    * @param total_count
-    * @param success_count
-    */
     protected void assmebVolumeData(String startCode,String endCode,BigInteger total_count,long success_count){
     	if(startCode == null || startCode.equals("")||endCode == null || endCode.equals("")){
     		log.warn("assmebData fail,startCode or endCode is null");
